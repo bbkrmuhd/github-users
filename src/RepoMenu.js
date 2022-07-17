@@ -3,7 +3,7 @@ import {useIterator} from "./Iterators";
 import RepositoryReadme from "./RepositoryReadme";
 
 
-export function RepoMenu({ repositories, login , selected, onSelect = f => f }){
+export function RepoMenu({ repositories, selected, onSelect = f => f }){
     const [{name}, previous, next] = useIterator(repositories,
         selected ? repositories.findIndex(repo => repo.name === selected) : null)
 

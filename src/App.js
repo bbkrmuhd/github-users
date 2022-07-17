@@ -45,12 +45,22 @@ import RepositoryReadme from "./RepositoryReadme";
 function App(){
     const [login, setLogin] = useState('bbkrmuhd')
     const [repo, setRepo] = useState("learning-react");
+
+    const handleSearch = login => {
+        if (login) return setLogin(login);
+        setLogin("");
+        setRepo("");
+    };
+        if (!login) return (
+        <SearchForm value={login} onSearch={handleSearch} />
+        );
+
     return (
         <>
-            <SearchForm value={login} onSearch={setLogin}/>
-            <GitHubUser login={login}/>
-            <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>
-            <RepositoryReadme login={login} repo={repo} />
+            <SearchForm value={login} onSearch={handleSearch}/>
+            {login && <GitHubUser login={login}/>}
+            {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
+            {login && repo && <RepositoryReadme login={login} repo={repo} />}
         </>
 
     )
