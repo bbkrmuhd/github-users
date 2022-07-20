@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import GitHubUser from './GithubUser';
 import SearchForm from "./SearchForm";
 import UserRepositories from "./UserRepositories";
 import RepositoryReadme from "./RepositoryReadme";
+import { GraphQLClient } from 'graphql-request';
 
 // import { bigList } from './Faker';
 // import List from './List';
@@ -42,22 +43,60 @@ import RepositoryReadme from "./RepositoryReadme";
 //   );
 // }
 
-function App(){
-    const [login, setLogin] = useState('bbkrmuhd')
-    const [repo, setRepo] = useState("learning-react");
+const query = ` 
+query findRepos($login: String!){
+    user(login: $login){
+      id
+      login
+      
+      name
+      location
+      avatar_url : avatarUrl
+      repositories (first: 100){
+        totalCount
+        nodes{
+          name
+        }
+      }
+    }
+        
+  }
+  `
 
-    const handleSearch = login => {
-        if (login) return setLogin(login);
-        setLogin("");
-        setRepo("");
-    };
-        if (!login) return (
-        <SearchForm value={login} onSearch={handleSearch} />
-        );
+  const client = new GraphQLClient(
+    "https://api.github.com/graphql", 
+    {
+        headers: {
+            Authorization: `Bearer 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`
+        }
+    }
+  )
+
+
+
+function App(){
+    const [login, setLogin] = useState("")
+    const [repo, setRepo] = useState("");
+
+    // const handleSearch = login => {
+    //     if (login) return setLogin(login);
+    //     setLogin("");
+    //     setRepo("");
+    // };
+    //     if (!login) return (
+    //     <SearchForm value={login} onSearch={handleSearch} />
+    //     );
+
+        useEffect(() => {
+        client.request(query, { login: login })
+        .then(results => JSON.stringify(results, null, 2))
+        .then(console.log)
+        .catch(console.error);
+        }, [client, login, query])
 
     return (
         <>
-            <SearchForm value={login} onSearch={handleSearch}/>
+            <SearchForm value={login} onSearch={setLogin}/>
             {login && <GitHubUser login={login}/>}
             {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
             {login && repo && <RepositoryReadme login={login} repo={repo} />}
