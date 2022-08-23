@@ -96,13 +96,20 @@ function App(){
 
     return (
         <>
+        <div className='nav'>
+          <div>Dev Finder</div>
+          <div><input type="checkbox" name="toggle" id="toggle" /><label htmlFor="toggle">Change</label></div>
+        </div>
             <SearchForm value={login} onSearch={setLogin}/>
             {login && <GitHubUser login={login}/>}
-            {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
-            {login && repo && <RepositoryReadme login={login} repo={repo} />}
+           
         </>
 
     )
 }
 
 export default App;
+
+
+// {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
+// {login && repo && <RepositoryReadme login={login} repo={repo} />}
