@@ -129,7 +129,8 @@ function App(){
         <div className="main">
         <div className='nav'>
           <div>Dev Finder</div>
-          <div style={{position: "relative"}}><label onClick={() => changeTheme} htmlFor="toggle" className="label"> <div>Dark</div><ion-icon className="night" name="moon"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div>
+          <div style={{position: "relative"}}><label onClick={() => changeTheme()} htmlFor="toggle" className="label"> <div>Dark</div><ion-icon className="night" name="moon"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div>
+          {/* <div style={{position: "relative"}}><label onClick={() => changeTheme} htmlFor="toggle" className="label"> <div>Light</div><ion-icon className="night" name="sunny"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div> */}
         </div>
             <SearchForm value={"bbkrmuhd"} onSearch={setLogin}/>
             {login && <GitHubUser login={login}/>}
