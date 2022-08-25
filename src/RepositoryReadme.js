@@ -1,6 +1,7 @@
 import React, { useState,useEffect, useCallback} from "react";
 import ReactMarkdown from "react-markdown";
 import {useMountedRef} from "./hooks";
+import GridLoader from "react-spinners/GridLoader";
 
 
 
@@ -30,10 +31,10 @@ export default function RepositoryReadme({repo, login}){
 
     if (error)
         return <pre>{JSON.stringify(error, null, 2)}</pre>
-    if (loading) return <h1>Loading...</h1>
+    if (loading) return <div className="loading2"> <GridLoader /></div>
 
     return (
-        <ReactMarkdown children={markdown}/>
+        <ReactMarkdown className="repo-readme" children={markdown}/>
     )
 
 }

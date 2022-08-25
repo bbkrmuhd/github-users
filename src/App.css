@@ -21,21 +21,12 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-body.dark-theme {
-
-  background: var(--primary-bg-dark);
-}
-
 h4 {
   margin: 0;
 }
 
 .root {
   background: var(--primary-bg-light);
-}
-
-body.dark-theme .nav {
-  background: var(--secondary-bg-dark);
 }
 
 .main {
@@ -103,8 +94,8 @@ body .nav {
 
 .loading {
   position: absolute;
-  left: 50%;
-  top: 20%;
+  left: 45%;
+  top: 25%;
 }
 
 .github-user{
@@ -113,15 +104,13 @@ body .nav {
   border-radius: 10px;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   margin: .5rem auto; 
-  display: flex;
-
 }
 .parent-image {
   margin: 1em;
 }
 .user-image {
   border-radius: 50%;
-  margin-top: 0;
+  margin-top: 1em;
 }
 
 .user-details {
@@ -212,6 +201,28 @@ p {
 .link:visited {
   color: var(--secondary-text-color-dark);
 }
+
+.selectors {
+  display: flex;
+  align-items: center;
+}
+
+.btn-repo {
+  padding: .5em 2em;
+  margin: 1em;
+  color: var(--search-color-light);
+  background: var(--btn-bg-color);
+  border: none;
+  border-radius: 10px;
+
+
+}
+
+.selectors, .repo-readme {
+  max-width: 600px;
+
+}
+
 @media screen and (max-width: 600px) {
   .main {
     margin: 1em;
@@ -223,6 +234,10 @@ p {
     padding: 0;
     margin: 1rem auto;
 
+  }
+
+  .github-user{
+    display: flex;
   }
   
   .search {
@@ -249,8 +264,9 @@ p {
     margin: 1em;
     flex-grow: 1;
   }
+
   .user-bio {
-    font-size: small;
+    font-size: 12px;
   }
 
   .parent-name {
@@ -262,13 +278,16 @@ p {
   .parent-stats {
     flex-direction: column;
     align-items: flex-start;
+    flex-grow: 0;
     padding: 0.2rem;
     margin: .5rem 0;
+    font-size: 12px;
   }
 
   .stats {
     flex-direction: row;
     align-items: center;
+    gap: 1em;
   }
 
   .last-section{
@@ -276,35 +295,43 @@ p {
     align-items: flex-start;
     gap: .5rem;
   }
-
   }
 
 
 
 @media (prefers-color-scheme: dark) {
   /* defaults to dark theme */ 
+  body {
+    background: var(--primary-bg-dark);
+  }
+
+
+  .root {
+    background: var(--primary-bg-dark);
+  }
+
+  body .nav {
+    color: var(--primary-text-color-dark);
+  }
     
-  .user-search.dark-theme {
+  .user-search {
     background: var(--secondary-bg-dark);
   }
-  
-  .search. {
-    background: var(--secondary-bg-dark);
-  }
-  
-  .btn-search{
-    color: var(--search-color-dark);
-    background: var(--btn-bg-color);
-  
-  }
-  
-  .github-user{
-    max-width: 600px;
-    background: var(--secondary-bg-dark);
-  }
-  
 
+  .search {
+    background: var(--secondary-bg-dark);
+    color: var(--secondary-text-color-dark);
+  }
 
+  
+  .btn-search {
+    color: var(--search-color-dar);
+    background: var(--search-color-dark)
+  }
+  
+  .github-user {
+    background: var(--secondary-bg-dark);
+  }
   
   .name {
     color: var(--primary-text-color-dark);
@@ -312,18 +339,16 @@ p {
   
   .username{
     color: var(--search-color-dark);
-
   }
   
-  .user-bio {
-    color: var(--primary-bg-dark);
+  .user-bio, .date-created {
+    color: var(--primary-text-color-dark);
   }
   
   .parent-stats {
     color: var(--primary-text-color-dark);
     background: var(--primary-bg-dark);
   }
-
   
   .child {
     color: var(--secondary-text-color-dark);

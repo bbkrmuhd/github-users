@@ -5,7 +5,7 @@ import GridLoader from "react-spinners/GridLoader";
 
 
 
-export default function Fetch({ uri, renderSuccess, loadingFallback =<div className="loading"> <GridLoader /></div>, renderError = error => (
+export default function Fetch({ uri, renderSuccess, loadingFallback =<div className="loading"><GridLoader /></div>, renderError = error => (
 <pre>{JSON.stringify(error, null, 2)}</pre> )
 }) {
 

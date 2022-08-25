@@ -61,7 +61,7 @@ function UserDetails({ data }) { return (
 <div className="last-section">  
   <div className="location-link">
     <div className="inline"><ion-icon name="location-outline"></ion-icon> {data.location && <p>{data.location}</p>}</div>
-    <div className="inline"><ion-icon name="link-outline"></ion-icon> {data.blog && <p>{data.blog}</p>}</div>
+    <a href={data.blog} className="inline link"><ion-icon name="link-outline"></ion-icon> {data.blog && <p>{data.blog}</p>}</a>
   </div>
 
   <div className="twitter-home">
@@ -71,45 +71,6 @@ function UserDetails({ data }) { return (
 
 </div>
 
-
-  
-
       </div>
     </div>
 ); }
-
-    // useEffect(() => {
-    //     if (!login) return;
-    //     if (data.login === login) return;
-    //     const { name, avatar_url, location } = data;
-    //     saveJson(`user:${login}`, { name, login, avatar_url, location})
-    // }, [data, login]);
-
-    // useEffect(() => {
-    //     if (!login) return;
-    //     if (data && data.login === login) return;
-    //     setLoading(true);
-    //     fetch(`https://api.github.com/users/${login}`)
-    //     .then(response => response.json())
-    //     .then(setData)
-    //     .then(() => setLoading(false))
-    //     .catch(setError)
-    // }, [login, data]);
-    //
-
-//     if (loading) return <h1>loading....</h1>;
-//     if (error) return <pre>{ JSON.stringify(error, null, 2)}</pre>;
-//
-//     if (!data) return;
-//
-//     return (
-//         <div className="githubUser">
-//             <img src={data.avatar_url} alt={data.login} style={{ width: 200}} />
-//             <div>
-//                 <h1>{data.login}</h1>
-//                 {data.name && <p>{data.name}</p>}
-//                 {data.location && <p>{ data.location }</p>}
-//             </div>
-//         </div>
-//     )
-// }
