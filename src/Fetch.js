@@ -1,7 +1,11 @@
-import React from "react";
+import React, { CSSStyleSheet }  from "react";
 import UseFetch from "./hooks";
+import GridLoader from "react-spinners/GridLoader";
 
-export default function Fetch({ uri, renderSuccess, loadingFallback = <p>loading...</p>, renderError = error => (
+
+
+
+export default function Fetch({ uri, renderSuccess, loadingFallback =<div className="loading"> <GridLoader /></div>, renderError = error => (
 <pre>{JSON.stringify(error, null, 2)}</pre> )
 }) {
 

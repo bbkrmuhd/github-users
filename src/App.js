@@ -86,23 +86,29 @@ function App(){
     //     if (!login) return (
     //     <SearchForm value={login} onSearch={handleSearch} />
     //     );
-
-        useEffect(() => {
-        client.request(query, { login: login })
-        .then(results => JSON.stringify(results, null, 2))
-        .then(console.log)
-        .catch(console.error);
-        }, [client, login, query])
+    
+      useEffect(() => {
+      client.request(query, { login: login })
+      .then(results => JSON.stringify(results, null, 2))
+      .then(console.log)
+      .catch(console.error);
+      }, [client, login, query])
 
     return (
         <>
+        <div className="main">
         <div className='nav'>
           <div>Dev Finder</div>
-          <div><input type="checkbox" name="toggle" id="toggle" /><label htmlFor="toggle">Change</label></div>
+          <div style={{position: "relative"}}><label onClick={() => changeTheme} htmlFor="toggle" className="label"> <div>Dark</div><ion-icon className="night" name="moon"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div>
         </div>
-            <SearchForm value={login} onSearch={setLogin}/>
+            <SearchForm value={"bbkrmuhd"} onSearch={setLogin}/>
             {login && <GitHubUser login={login}/>}
-           
+      
+
+
+
+        </div>
+       
         </>
 
     )
@@ -112,4 +118,4 @@ export default App;
 
 
 // {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
-// {login && repo && <RepositoryReadme login={login} repo={repo} />}
+// {login && repo && <RepositoryReadme login={login} repo={repo} />} 
