@@ -7,36 +7,6 @@ import RepositoryReadme from "./RepositoryReadme";
 import { GraphQLClient } from 'graphql-request';
 
 
-const query = ` 
-query findRepos($login: String!){
-    user(login: $login){
-      id
-      login
-      
-      name
-      location
-      avatar_url : avatarUrl
-      repositories (first: 100){
-        totalCount
-        nodes{
-          name
-        }
-      }
-    }
-        
-  }
-  `
-
-  const client = new GraphQLClient(
-    "https://api.github.com/graphql", 
-    {
-        headers: {
-            Authorization: `Bearer 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`
-        }
-    }
-  )
-
-
 
 function App(){
     const [login, setLogin] = useState("")
@@ -73,14 +43,6 @@ function App(){
     }
 
 
-    
-      useEffect(() => {
-      client.request(query, { login: login })
-      .then(results => JSON.stringify(results, null, 2))
-      .then(console.log)
-      .catch(console.error);
-      }, [client, login, query])
-
     return (
         <>
         <div className="main">
@@ -89,11 +51,10 @@ function App(){
           <div style={{position: "relative"}}><label onClick={() => changeTheme()} htmlFor="toggle" className="label"> <div>Dark</div><ion-icon className="night" name="moon"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div>
           {/* <div style={{position: "relative"}}><label onClick={() => changeTheme} htmlFor="toggle" className="label"> <div>Light</div><ion-icon className="night" name="sunny"></ion-icon></label><input className='btn-toggle' type="checkbox" name="toggle" id="toggle" /></div> */}
         </div>
-            <SearchForm value={"bukharee"} onSearch={setLogin}/>
+            <SearchForm value={"bbkrmuhd"} onSearch={setLogin}/>
             {login && <GitHubUser login={login}/>}
             {login && <UserRepositories login={login} selectedRepo={repo} onSelect={setRepo}/>}
-            {login && repo && <RepositoryReadme login={login} repo={repo} />} 
-
+            {login && repo && <div className='repo-readme'><RepositoryReadme login={login} repo={repo} /></div>}
 
         </div>
        

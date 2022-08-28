@@ -31,7 +31,7 @@ h4 {
 
 .main {
   margin: auto;
-  max-width: 800px; 
+  max-width: 600px; 
   min-height: 100vh;
   position: relative;
 }
@@ -205,6 +205,8 @@ p {
 .selectors {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin: 1em 0;
 }
 
 .btn-repo {
@@ -218,9 +220,23 @@ p {
 
 }
 
-.selectors, .repo-readme {
-  max-width: 600px;
+.repo-main {
+  position: relative;
+}
 
+.loading2 {
+  position: absolute;
+  left: 45%;
+  bottom: 10%;
+}
+
+.repo-readme {
+  background: var(--secondary-bg-light);
+  border-radius: 10px;
+  padding: 1em;
+  text-align: justify;
+  overflow:auto;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 @media screen and (max-width: 600px) {
@@ -353,6 +369,11 @@ p {
   .child {
     color: var(--secondary-text-color-dark);
   
+  }
+  .repo-readme {
+    background: var(--secondary-bg-dark);
+    color: var(--primary-text-color-dark);
+    
   }
   
 
